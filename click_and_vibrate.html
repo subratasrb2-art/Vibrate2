@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click & Vibrate</title>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+  }
+  .box {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.12);
+    max-width: 330px;
+  }
+  .button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 18px 28px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    background: #198754;
+    border-radius: 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+  #msg { margin-top: 18px; color: #555; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h2>📳 ফোন ভাইব্রেট</h2>
+  <p>নিচের বোতামে ক্লিক করুন</p>
+  <div class="button" onclick="vibrate()">ক্লিক করুন</div>
+  <div id="msg"></div>
+</div>
+
+<script>
+function vibrate() {
+  const msg = document.getElementById("msg");
+
+  if ("vibrate" in navigator) {
+    navigator.vibrate([300, 150, 300, 150, 600]);
+    msg.textContent = "ফোন ভাইব্রেট হওয়ার কথা।";
+  } else {
+    msg.textContent = "এই ব্রাউজার/ডিভাইসে vibration API সমর্থিত নয়।";
+  }
+}
+</script>
+</body>
+</html>
